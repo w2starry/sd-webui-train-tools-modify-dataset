@@ -102,7 +102,17 @@ def on_ui_update_dataset_click(id: str, project: str, version: str, input_train_
     os.makedirs(processed_output_path, exist_ok=True)
     os.makedirs(origin_preload_data_path, exist_ok=True)
 
-    
+    # 遍历源文件夹中的所有文件和子文件夹
+    for item in os.listdir(origin_data_path):
+        src_item = os.path.join(origin_data_path, item)
+        dst_item = os.path.join(processed_output_path, item)
+
+        # 如果当前项是一个文件，则复制它
+        if os.path.isfile(src_item):
+            shutil.copy2(src_item, dst_item)
+        # 如果当前项是一个文件夹，则递归地复制其内容
+        elif os.path.isdir(src_item):
+            shutil.copytree(src_item, dst_item, dirs_exist_ok=True)
 
     return get_project_version_dataset_box_update(project, version)+[""]
 
