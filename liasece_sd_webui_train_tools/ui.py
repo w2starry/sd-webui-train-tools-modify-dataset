@@ -59,7 +59,7 @@ def new_ui():
             # UI: Project Version Dataset Dropdown
             with gr.Column():
                 # UI: current dataset images
-                with gr.Box():
+                with gr.Box():  # 右边的数据集
                     gr.Markdown(f"### Current Dataset to be trained")
                     with gr.Row():
                         gr_project_version_dataset_gallery = gr.Gallery(value=None, label='Output', show_label=False, elem_id=f"gr_project_version_dataset_gallery").style(grid=4)
@@ -72,7 +72,7 @@ def new_ui():
                     with gr.Row():
                         # UI: dateset files uploader
                         input_train_data_set_files = gr.Files(interactive=True, label="Upload Dataset", type="file", tool="sketch")
-                    with gr.Box():
+                    with gr.Box(visible=False):
                         # UI: dateset files upload post process
                         with gr.Row():
                             gr.Markdown(f"### Preprocess images")
@@ -110,9 +110,9 @@ def new_ui():
                                 with gr.Row():
                                     process_multicrop_objective = gr.Radio(["Maximize area", "Minimize error"], value="Maximize area", label="Resizing objective", elem_id="process_multicrop_objective", interactive = True)
                                     process_multicrop_threshold = gr.Slider(minimum=0, maximum=1, step=0.01, label="Error threshold", value=0.1, elem_id="process_multicrop_threshold", interactive = True)
-                        with gr.Row():
-                            # UI: dataset global config
-                            train_num_repetitions = gr.Number(value=-1, label="Train number of repetitions", elem_id="train_num_repetitions", interactive = True)
+                    with gr.Row():
+                        # UI: dataset global config
+                        train_num_repetitions = gr.Number(value=-1, label="Train number of repetitions", elem_id="train_num_repetitions", interactive = True)
                     with gr.Row():
                         with gr.Row(elem_id=f"gr_project_version_dataset_gallery_container"):
                             # UI: dateset update button

@@ -145,7 +145,7 @@ def on_train_begin_click(id: str, project: str, version: str,
         checkpoint_save_path = get_project_version_trains_checkpoint_path(project, version, train_name)
         os.makedirs(checkpoint_save_path, exist_ok=True)
         cfg = ArgsList.ArgStore()  # ArgsList中定义的类名，可能涉及后端train_config的修改，用于真正训练中的参数配置
-        cfg.img_folder = os.path.abspath(processed_path)
+        cfg.img_folder = os.path.abspath(processed_path)  # 数据集
         cfg.output_folder = os.path.abspath(checkpoint_save_path)
         cfg.change_output_name = project + r"-" + version
         cfg.batch_size = int(train_batch_size)

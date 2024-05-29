@@ -9,7 +9,7 @@ default_config = [
     {"process_width": 512},
     {"process_height": 512},
     {"preprocess_txt_action": "ignore"},
-    {"process_flip": True},
+    {"process_flip": False},
     {"process_split": False},
     {"process_caption": False},
     {"process_caption_deepbooru": False},
