@@ -129,13 +129,13 @@ def new_ui():
                             tiles = shared.list_checkpoint_tiles()
                             train_base_model = gr.Dropdown(label="Train base model",value= tiles[0] if len(tiles) > 0 else "", choices= tiles, interactive = True, elem_id="train_base_model")
                             train_base_model_refresh_button = ui.ToolButton(value=ui.refresh_symbol, elem_id="train_base_model_refresh_button")
-                        with gr.Row():
+                        with gr.Row(visible=False):
                             train_base_on_sd_v2 = gr.Checkbox(label="Base on Stable Diffusion V2", value=False, elem_id="train_base_on_sd_v2", interactive = True)
                             use_sdxl = gr.Checkbox(label="Base on Stable Diffusion XL", value=False, elem_id="use_sdxl", interactive = True)
                         with gr.Row():
                             train_xformers = gr.Checkbox(label="Use xformers", value=True, elem_id="train_xformers", interactive = True)
                         with gr.Row():
-                            train_clip_skip = gr.Number(label="Clip skip (2 if training anime model)", value=2, elem_id="train_clip_skip", interactive = True)
+                            train_clip_skip = gr.Number(label="clip skip (2 if training anime model)", value=2, elem_id="train_clip_skip", interactive = True)
                         with gr.Row():
                             train_save_every_n_epochs = gr.Number(value=5, label="Save every n epochs", elem_id="train_save_every_n_epochs", interactive = True)
                     with gr.Column():
@@ -147,7 +147,7 @@ def new_ui():
                         train_scheduler = gr.Dropdown(choices=["linear", "cosine", "cosine_with_restarts", "polynomial", "constant"], value="cosine", label="lr_scheduler", elem_id="train_scheduler", interactive=True)
                         train_cosine_restarts = gr.Textbox(value=None, label="lr restarts", placeholder="Optional, for cosine with restarts only", elem_id="train_cosine_restarts", interactive=True)
                         train_polynomial_power = gr.Textbox(value=None, label="lr power", placeholder="Optional, for polynomial only", elem_id="train_polynomial_power", interactive=True)
-                        sd_script_args = gr.Textbox(value="", label="Append or override the sd_script args. (e.g. `--lr_scheduler=\"constant_with_warmup\" --max_grad_norm=0.0`)", elem_id="sd_script_args", interactive = True)
+                        sd_script_args = gr.Textbox(visible=False, value="", label="Append or override the sd_script args. (e.g. `--lr_scheduler=\"constant_with_warmup\" --max_grad_norm=0.0`)", elem_id="sd_script_args", interactive = True)
                     with gr.Column():
                         train_net_dim = gr.Slider(8, 128, step=1, value=64, label="Net dim (max:144MB)", elem_id="train_net_dim", interactive = True)
                         train_alpha = gr.Slider(8, 128, step=1, value=32, label="Alpha (default is half of Net dim)", elem_id="train_alpha", interactive = True)
