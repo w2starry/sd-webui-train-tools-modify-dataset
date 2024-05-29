@@ -73,7 +73,6 @@ def on_ui_update_dataset_click(id: str, project: str, version: str, input_train_
     
     # save to project version path
     origin_data_path = get_project_version_dataset_origin_path(project, version)
-    origin_preload_data_path = os.path.join(origin_data_path, "preload")
     processed_path = get_project_version_dataset_processed_path(project, version)
     printD("on_ui_update_dataset_click save_path:", origin_data_path, processed_path)
     if origin_data_path == "" or processed_path == "":
@@ -100,7 +99,6 @@ def on_ui_update_dataset_click(id: str, project: str, version: str, input_train_
             train_num_repetitions = 4
     processed_output_path = os.path.join(processed_path, str(train_num_repetitions)+"_"+project)
     os.makedirs(processed_output_path, exist_ok=True)
-    os.makedirs(origin_preload_data_path, exist_ok=True)
 
     # 遍历源文件夹中的所有文件和子文件夹
     for item in os.listdir(origin_data_path):
