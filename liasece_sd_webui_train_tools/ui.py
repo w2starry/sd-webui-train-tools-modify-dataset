@@ -233,7 +233,7 @@ def train_ui():
         def trains_area_outputs():
             return [gr_trains_dropdown] + checkpoint_box_outputs()
         def dataset_outputs():
-            return [gr_project_version_dateset_row, train_row, preview_box, gr_project_version_dataset_gallery, gr_project_version_dataset_label]
+            return [gr_project_version_dateset_row, train_row]
         def dataset_config_inputs():
             return [
                 train_num_repetitions,
