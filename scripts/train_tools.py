@@ -10,6 +10,6 @@ def on_ui_tabs():
     # init
     
     # the third parameter is the element id on html, with a "tab_" as prefix
-    return (new_ui() , "Train LoRA", "train_LoRA"),
+    return (train_ui(), "Train LoRA", "train_LoRA"),
 
 script_callbacks.on_ui_tabs(on_ui_tabs)

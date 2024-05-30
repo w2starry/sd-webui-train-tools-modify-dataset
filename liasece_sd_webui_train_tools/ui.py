@@ -16,7 +16,7 @@ from liasece_sd_webui_train_tools.dateset_ui import *
 from liasece_sd_webui_train_tools.train_ui import *
 import liasece_sd_webui_train_tools.sd_scripts.train_network as train_network
 
-def new_ui():
+def train_ui():
     # ====UI====
     # prepare for train data set
     with gr.Blocks(css="button {background-color: #2171f1}") as train_tools:
