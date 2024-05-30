@@ -233,7 +233,7 @@ def train_ui():
         def trains_area_outputs():
             return [gr_trains_dropdown] + checkpoint_box_outputs()
         def dataset_outputs():
-            return [gr_project_version_dateset_row, train_row]
+            return [gr_project_version_dateset_row, train_row, preview_box, gr_project_version_dataset_gallery, gr_project_version_dataset_label]
         def dataset_config_inputs():
             return [
                 train_num_repetitions,
@@ -318,7 +318,7 @@ def train_ui():
         project_refresh_button.click(
             fn = ui_refresh_project,
             inputs = [gr_project_dropdown, gr_version_dropdown],
-            outputs = [gr_project_dropdown, gr_project_version_row, gr_version_dropdown]+dataset_outputs()+trains_area_outputs()+all_config_inputs(), 
+            outputs = [gr_project_dropdown, gr_project_version_row, gr_version_dropdown]+dataset_outputs()+trains_area_outputs()+all_config_inputs(),
         )
         create_project_btn.click(
             fn=on_ui_create_project_click,
@@ -335,7 +335,7 @@ def train_ui():
         project_version_refresh_button.click(
             fn = ui_refresh_version,
             inputs = [gr_project_dropdown, gr_version_dropdown],
-            outputs = [gr_version_dropdown]+dataset_outputs()+trains_area_outputs()+all_config_inputs(), 
+            outputs = [gr_version_dropdown]+dataset_outputs()+trains_area_outputs()+all_config_inputs(),
         )
         create_project_version_btn.click(
             fn=on_ui_create_project_version_click,
