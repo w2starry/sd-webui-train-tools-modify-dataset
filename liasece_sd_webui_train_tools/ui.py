@@ -143,21 +143,28 @@ def new_ui():
                         with gr.Row():
                             train_optimizer_type = gr.Dropdown(label="Optimizer type", value=["Lion"], choices=["Adam", "AdamW", "AdamW8bit", "Lion", "SGDNesterov", "SGDNesterov8bit", "DAdaptation", "AdaFactor"], multiselect=True, interactive=True, elem_id="train_optimizer_type")
                     with gr.Column():
-                        train_batch_size = gr.Number(value=1, label="Batch size", elem_id="train_batch_size", interactive = True)
-                        train_num_epochs = gr.Number(value=40, label="Number of epochs", elem_id="train_num_epochs", interactive = True)
-
-                        train_unet_lr = gr.Textbox(label="U-Net learning rate", value=None, elem_id="train_unet_lr", placeholder="Optional", interactive=True)
-
-                        train_cosine_restarts = gr.Textbox(value=None, label="lr restarts", placeholder="Optional, for cosine with restarts only", elem_id="train_cosine_restarts", interactive=True)
-                        train_alpha = gr.Slider(8, 128, step=1, value=32, label="Alpha (default is half of Net dim)", elem_id="train_alpha", interactive=True)
-                        train_mixed_precision = gr.Dropdown( label="Mixed precision (If your graphics card supports bf16 better)", value="fp16", choices=["fp16", "bf16"], interactive=True, elem_id="train_mixed_precision")
+                        with gr.Row():
+                            train_batch_size = gr.Number(value=1, label="Batch size", elem_id="train_batch_size", interactive = True)
+                        with gr.Row():
+                            train_num_epochs = gr.Number(value=40, label="Number of epochs", elem_id="train_num_epochs", interactive = True)
+                        with gr.Row():
+                            train_unet_lr = gr.Textbox(label="U-Net learning rate", value=None, elem_id="train_unet_lr", placeholder="Optional", interactive=True)
+                        with gr.Row():
+                            train_cosine_restarts = gr.Textbox(value=None, label="lr restarts", placeholder="Optional, for cosine with restarts only", elem_id="train_cosine_restarts", interactive=True)
+                        with gr.Row():
+                            train_alpha = gr.Slider(8, 128, step=1, value=32, label="Alpha (default is half of Net dim)", elem_id="train_alpha", interactive=True)
+                        with gr.Row():
+                            train_mixed_precision = gr.Dropdown( label="Mixed precision (If your graphics card supports bf16 better)", value="fp16", choices=["fp16", "bf16"], interactive=True, elem_id="train_mixed_precision")
                         sd_script_args = gr.Textbox(visible=False, value="", label="Append or override the sd_script args. (e.g. `--lr_scheduler=\"constant_with_warmup\" --max_grad_norm=0.0`)", elem_id="sd_script_args", interactive = True)
                     with gr.Column():
-                        train_clip_skip = gr.Number(label="clip skip (2 if training anime model)", value=2, elem_id="train_clip_skip", interactive=True)
-                        train_save_every_n_epochs = gr.Number(value=5, label="Save every n epochs", elem_id="train_save_every_n_epochs", interactive=True)
-                        train_text_encoder_lr = gr.Textbox(label="Text Encoder learning rate", value=None, elem_id="train_text_encoder_lr", placeholder="Optional", interactive=True)
-                        train_optimizer_type = gr.Dropdown(label="Optimizer type",value=["Lion"], choices=["Adam", "AdamW", "AdamW8bit", "Lion", "SGDNesterov", "SGDNesterov8bit", "DAdaptation", "AdaFactor"], multiselect = True, interactive = True, elem_id="train_optimizer_type")
-                        train_polynomial_power = gr.Textbox(value=None, label="lr power", placeholder="Optional, for polynomial only", elem_id="train_polynomial_power", interactive=True)
+                        with gr.Row():
+                            train_clip_skip = gr.Number(label="clip skip (2 if training anime model)", value=2, elem_id="train_clip_skip", interactive=True)
+                        with gr.Row():
+                            train_save_every_n_epochs = gr.Number(value=5, label="Save every n epochs", elem_id="train_save_every_n_epochs", interactive=True)
+                        with gr.Row():
+                            train_text_encoder_lr = gr.Textbox(label="Text Encoder learning rate", value=None, elem_id="train_text_encoder_lr", placeholder="Optional", interactive=True)
+                        with gr.Row():
+                            train_polynomial_power = gr.Textbox(value=None, label="lr power", placeholder="Optional, for polynomial only", elem_id="train_polynomial_power", interactive=True)
 
                 with gr.Row():
                     with gr.Column(scale=2):
