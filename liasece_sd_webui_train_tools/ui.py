@@ -71,7 +71,7 @@ def train_ui():
                     # UI: upload dataset
                     with gr.Row():
                         # UI: dateset files uploader
-                        input_train_data_set_files = gr.Files(interactive=True, label="Upload Dataset", type="file", tool="sketch")
+                        input_train_dataset = gr.Files(interactive=True, label="Upload Dataset", type="file", tool="sketch")
                     with gr.Box(visible=False):
                         # UI: dateset files upload post process
                         with gr.Row():
@@ -360,13 +360,13 @@ def train_ui():
             outputs=[process_multicrop_col],
         )
         update_dataset_btn.click(
-            fn=wrap_gradio_gpu_call(on_ui_update_dataset_click, extra_outputs=[None]*len(dataset_outputs())+[""]),
+            fn=wrap_gradio_gpu_call(on_update_dataset_click, extra_outputs=[None]*len(dataset_outputs())+[""]),
             _js="on_ui_update_dataset_click",
             inputs=[
                 dummy_component,
                 gr_project_dropdown,
                 gr_version_dropdown,
-                input_train_data_set_files,
+                input_train_dataset,
                 # dataset images preprocess
             ]
                 +dataset_config_inputs(),

@@ -20,7 +20,7 @@ import liasece_sd_webui_train_tools.tools.preprocess as preprocess
 # from liasece_sd_webui_train_tools.dateset_ui import *
 # from liasece_sd_webui_train_tools.train_ui import *
 
-def on_ui_update_dataset_click(id: str, project: str, version: str, input_train_data_set_files: list[tempfile._TemporaryFileWrapper], train_num_repetitions: int, 
+def on_update_dataset_click(id: str, project: str, version: str, input_train_data_set_files: list[tempfile._TemporaryFileWrapper], train_num_repetitions: int,
         process_width,
         process_height,
         preprocess_txt_action,
