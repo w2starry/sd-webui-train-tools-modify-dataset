@@ -33,7 +33,7 @@ default_config = [
     {"train_num_epochs": 10},
     {"train_save_every_n_epochs": 2},
     {"train_finish_generate_all_checkpoint_preview": True},
-    {"train_optimizer_type": ["Lion"]},
+    {"train_optimizer_type": "Lion"},
     {"train_learning_rate": "0.0001"},
     {"sd_script_args": ""},
     {"train_net_dim": 64},
