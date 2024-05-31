@@ -196,7 +196,7 @@ def on_train_begin_click(id: str, project: str, version: str,
         )
     return [None]+gr_update_trains_area_list(project, version, train_name)+["done"]
 
-def ui_refresh_train_base_model():
+def train_base_model_refresh_click():
     shared.refresh_checkpoints()
     tiles = shared.list_checkpoint_tiles()
     return [

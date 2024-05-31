@@ -128,7 +128,7 @@ def train_ui():
                         with gr.Row():
                             tiles = shared.list_checkpoint_tiles()
                             train_base_model = gr.Dropdown(label="Train base model",value= tiles[0] if len(tiles) > 0 else "", choices= tiles, interactive = True, elem_id="train_base_model")
-                            train_base_model_refresh_button = ui.ToolButton(value=ui.refresh_symbol, elem_id="train_base_model_refresh_button")
+                            train_base_model_refresh_btn = ui.ToolButton(value=ui.refresh_symbol, elem_id="train_base_model_refresh_button")
                         with gr.Row(visible=False):
                             train_base_on_sd_v2 = gr.Checkbox(label="Base on Stable Diffusion V2", value=False, elem_id="train_base_on_sd_v2", interactive = True)
                             use_sdxl = gr.Checkbox(label="Base on Stable Diffusion XL", value=False, elem_id="use_sdxl", interactive = True)
@@ -374,8 +374,8 @@ def train_ui():
             show_progress=False,
         )
         # train
-        train_base_model_refresh_button.click(
-            fn = ui_refresh_train_base_model,
+        train_base_model_refresh_btn.click(
+            fn = train_base_model_refresh_click,
             outputs = [train_base_model], 
         )
         train_begin_btn.click(
