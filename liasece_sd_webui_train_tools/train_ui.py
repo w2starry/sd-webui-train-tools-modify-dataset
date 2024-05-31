@@ -30,7 +30,7 @@ def on_train_begin_click(id: str, project: str, version: str,
         train_num_epochs: int, 
         train_save_every_n_epochs: int,
         train_finish_generate_all_checkpoint_preview: bool,
-        train_optimizer_type: list[str],
+        train_optimizer_type: str,
         train_learning_rate: str,
         sd_script_args: str,
         train_net_dim: int,
@@ -134,12 +134,10 @@ def on_train_begin_click(id: str, project: str, version: str,
     processed_path = get_project_version_dataset_processed_path(project, version)
     os.makedirs(processed_path, exist_ok=True)
 
-    for train_optimizer_type_item in train_optimizer_type:
-        if train_base_model_name == "":
-            printD("unknown base model", train_base_model_name)
-            continue
+
+    if train_base_model_name != "":
         train_name = (train_base_model_name + "-bs-" + str(int(train_batch_size)) + "-ep-" + str(
-            int(train_num_epochs)) + "-op-" + str(train_optimizer_type_item) + "-lr-" + str(
+            int(train_num_epochs)) + "-op-" + str(train_optimizer_type) + "-lr-" + str(
             float(train_learning_rate)) + "-net-" + str(int(train_net_dim)) + "-ap-" + str(
             int(train_alpha))).replace(" ", "").replace(".", "_")
         checkpoint_save_path = get_project_version_trains_checkpoint_path(project, version, train_name)
@@ -152,7 +150,7 @@ def on_train_begin_click(id: str, project: str, version: str,
         cfg.num_epochs = int(train_num_epochs)
         cfg.save_every_n_epochs = int(train_save_every_n_epochs)
         cfg.base_model = train_base_model_path
-        cfg.optimizer_type = train_optimizer_type_item
+        cfg.optimizer_type = train_optimizer_type
         cfg.learning_rate = float(train_learning_rate)
         cfg.unet_lr = train_unet_lr
         cfg.text_encoder_lr = train_text_encoder_lr

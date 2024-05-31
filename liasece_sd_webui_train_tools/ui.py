@@ -149,10 +149,10 @@ def train_ui():
                         train_unet_lr = gr.Textbox(label="U-Net learning rate", value=None, elem_id="train_unet_lr", placeholder="Optional", interactive=True)
 
                         train_cosine_restarts = gr.Textbox(value=None, label="lr restarts", placeholder="Optional, for cosine with restarts only", elem_id="train_cosine_restarts", interactive=True)
-                        train_optimizer_type = gr.Dropdown(label="Optimizer type", value=["Lion"],
+                        train_optimizer_type = gr.Dropdown(label="Optimizer type", value="Lion",
                                                            choices=["Adam", "AdamW", "AdamW8bit", "Lion", "SGDNesterov",
                                                                     "SGDNesterov8bit", "DAdaptation", "AdaFactor"],
-                                                           multiselect=True, interactive=True,
+                                                           interactive=True,
                                                            elem_id="train_optimizer_type")
 
                         sd_script_args = gr.Textbox(visible=False, value="", label="Append or override the sd_script args. (e.g. `--lr_scheduler=\"constant_with_warmup\" --max_grad_norm=0.0`)", elem_id="sd_script_args", interactive = True)
@@ -380,7 +380,7 @@ def train_ui():
         )
         train_begin_btn.click(
             fn=wrap_gradio_gpu_call(on_train_begin_click, extra_outputs=[None]*len(trains_area_outputs())+[""]),
-            _js="on_train_begin_click",
+            _js="on_ui_train_begin_click",
             inputs=[
                 dummy_component,
                 gr_project_dropdown,

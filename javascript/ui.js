@@ -23,7 +23,7 @@ function on_ui_update_dataset_click() {
     return res;
 }
 
-function on_train_begin_click() {
+function on_ui_train_begin_click() {
     li_tt_showSubmitButtons("begin_train_btn", false); //第一个参数是“开始训练”的elem_id，调用函数见上，false表示不显示，该设置是在开始训练之后避免再次点击按钮出发相关事件
     var id = randomId();                         //train_begin_btn_container是begin_train_btn所在的ROW
     requestProgress(id, gradioApp().getElementById("train_begin_btn_container"), null, function () { //requestProgress向服务器发送开始训练的请求，并在请求期间显示进度条，sd-webui>javascript里的
